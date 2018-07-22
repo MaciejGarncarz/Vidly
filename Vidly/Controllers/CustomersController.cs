@@ -3,44 +3,47 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Vidly.Database;
 using Vidly.Models;
 using Vidly.ViewModel;
+using System.Data.Entity;
 
 namespace Vidly.Controllers
 {
     public class CustomersController : Controller
     {
+        private MyContext _context;
+
+        public CustomersController()
+        {
+            _context = new MyContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
         // GET: Customers
         public ViewResult Index()
         {
-            var movie = new Movie() { Name = "Poseidon" };
-            var customers = new List<Customer>
-            {
-                new Customer() {Name =  "Maciej", Surname = "Garncarz", Id = 1},
-                new Customer() {Name =  "Patrycja", Surname = "Biegun", Id = 2},
-            };
+            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
 
+            var movie = new Movie() { Name = "Poseidon" };
             var viewModel = new RandomMovieViewModel
             {
                 Movie = movie,
                 Customers = customers
             };
-
-
             return View(viewModel);
         }
 
         public ViewResult Detail(int id)
         {
-            var customers = new List<Customer>
-            {
-                new Customer() {Name =  "Maciej", Surname = "Garncarz", Id = 1},
-                new Customer() {Name =  "Patrycja", Surname = "Biegun", Id = 2},
-            };
 
-            var customerToReturn = customers.SingleOrDefault(x => x.Id == id);
+            var customer = _context.Customers.SingleOrDefault(x => x.Id == id);
 
-            return View(customerToReturn);
+            return View(customer);
         }
     }
 }

@@ -11,18 +11,24 @@
 <table class="table table-hover">
     <thead>
         <tr class="table-danger">
-            <td>Customers</td>
+            <th>Customers</th>
+            <th>Discount Rate</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var customer in Model.Customers)
         {
-            <tr class="table-info">
-                @{
-                    string customerLinkData = $"{customer.Name} {customer.Surname}";
-                }
-                <td>@Html.ActionLink(customerLinkData, "Detail", "Customers", new { Id = customer.Id}, null)</td>
-            </tr>
+        <tr class="table-info">
+            @{
+        string customerLinkData = $"{customer.Name} {customer.Surname}";
+            }
+            <td>
+                @Html.ActionLink(customerLinkData, "Detail", "Customers", new { Id = customer.Id }, null)
+            </td>
+            <td>
+                @customer.MembershipType.DiscountRate%
+            </td>
+        </tr>
         }   
     </tbody>
 </table>

@@ -160,8 +160,21 @@
     <Compile Include="Migrations\201807221355508_InitialModel.Designer.cs">
       <DependentUpon>201807221355508_InitialModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807221412044_MembershipTypeAdded.cs" />
+    <Compile Include="Migrations\201807221412044_MembershipTypeAdded.Designer.cs">
+      <DependentUpon>201807221412044_MembershipTypeAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807221522124_PopulateMembershipTypes.cs" />
+    <Compile Include="Migrations\201807221522124_PopulateMembershipTypes.Designer.cs">
+      <DependentUpon>201807221522124_PopulateMembershipTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807221538328_ApplyDataAnotationsToCustomerContext.cs" />
+    <Compile Include="Migrations\201807221538328_ApplyDataAnotationsToCustomerContext.Designer.cs">
+      <DependentUpon>201807221538328_ApplyDataAnotationsToCustomerContext.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\RandomMovieViewModel.cs" />
@@ -270,6 +283,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201807221355508_InitialModel.resx">
       <DependentUpon>201807221355508_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807221412044_MembershipTypeAdded.resx">
+      <DependentUpon>201807221412044_MembershipTypeAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807221522124_PopulateMembershipTypes.resx">
+      <DependentUpon>201807221522124_PopulateMembershipTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807221538328_ApplyDataAnotationsToCustomerContext.resx">
+      <DependentUpon>201807221538328_ApplyDataAnotationsToCustomerContext.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
