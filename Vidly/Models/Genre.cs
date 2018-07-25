@@ -5,12 +5,9 @@ using System.Web;
 
 namespace Vidly.Models
 {
-    public class MembershipType
+    public class Genre
     {
         public int Id { get; set; }
-        public short SignUpFree { get; set; }
-        public byte DurationInMonths { get; set; }
-        public byte DiscountRate { get; set; }
         public string Name { get; set; }
     }
 }
