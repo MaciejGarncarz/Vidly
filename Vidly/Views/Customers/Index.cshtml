@@ -7,6 +7,7 @@
 }
 
 <h2>Customers</h2>
+<button class="btn btn-warning">@Html.ActionLink("New", "New", "Customers")</button>
 
 <table class="table table-hover">
     <thead>
@@ -23,7 +24,7 @@
         string customerLinkData = $"{customer.Name} {customer.Surname}";
             }
             <td>
-                @Html.ActionLink(customerLinkData, "Detail", "Customers", new { Id = customer.Id }, null)
+                @Html.ActionLink(customerLinkData, "Edit", "Customers", new { Id = customer.Id }, null)
             </td>
             <td>
                 @customer.MembershipType.Name
