@@ -52,8 +52,12 @@ namespace Vidly.Controllers
 
         public ActionResult New()
         {
+            var movie = new Movie();
+            movie.NumberInStock = 0;
+            movie.ReleaseDate = DateTime.MinValue;
             var viewModel = new NewMovieViewModel()
             {
+                Movie =  movie,
                 Genres = _context.Genres.ToList()
             };
 
@@ -61,6 +65,7 @@ namespace Vidly.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(NewMovieViewModel viewModel)
         {
             var movieFromView = viewModel.Movie;

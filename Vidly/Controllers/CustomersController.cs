@@ -55,6 +55,7 @@ namespace Vidly.Controllers
 
             var viewModel = new NewCustomerViewModel()
             {
+                Customer = new Customer(),
                 MembershipTypes =  membershipTypes
             };
 
@@ -62,8 +63,20 @@ namespace Vidly.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(NewCustomerViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModelInController = new NewCustomerViewModel
+                {
+                    Customer = viewModel.Customer,
+                    MembershipTypes = _context.MembershipTypes.ToList()
+                };
+
+                return View("New", viewModelInController);
+            }
+
             if (viewModel.Customer.Id == 0)
             {
                 _context.Customers.Add(viewModel.Customer);
